@@ -173,4 +173,6 @@ Route::get("cat_alat/{id}", function($id){
     ['data'=> $hasil]);
 });
 
+Route::resource('product', 'ProductController');
+
 
