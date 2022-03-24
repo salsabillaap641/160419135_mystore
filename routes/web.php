@@ -174,5 +174,29 @@ Route::get("cat_alat/{id}", function($id){
 });
 
 Route::resource('product', 'ProductController');
+Route::resource('category', 'CategoryController');
+Route::post('product/showInfo', 'ProductController@showInfo')->name('product.showInfo');
+
+Route::get('/report/listmedicine/{id}', 'CategoryController@showlist')->name('reportShowMedicine');
+
+Route::get('/report/listmedicine', 'ReportController@showAllProducts')->name('reportShowAllProducts');
+
+Route::get('/report/listmedicine3', 'ReportController@showNameFormPriceProducts')->name('reportShowNameFormPriceProducts');
+
+Route::get('/report/listcategory', 'ReportController@showAllCategories')->name('reportShowAllCategories');
+
+Route::get('/report/listmedicine2', 'ReportController@showAllProductsWithCat')->name('reportShowAllProductsWithCat');
+
+Route::get('/report/listcategory2', 'ReportController@showCategoryHaveProducts')->name('reportShowCategoryHaveProducts');
+
+Route::get('/report/listcategory3', 'ReportController@showCategoryNoProducts')->name('reportShowCategoryNoProducts');
+
+Route::get('/report/listcategory4', 'ReportController@showAvgPriceCategory')->name('reportShowAvgPriceCategory');
+
+Route::get('/report/listcategory5', 'ReportController@showProductSatuForm')->name('reportShowProductSatuForm');
+
+Route::get('/report/listcategory6', 'ReportController@showCategorySatuProduct')->name('reportShowCategorySatuProduct');
+
+Route::get('/report/listcategory7', 'ReportController@showCategoryWithHighPrice')->name('reportShowCategoryWithHighPrice');
 
 

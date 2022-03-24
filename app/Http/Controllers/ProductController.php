@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         #query raw
-        $listdata = DB::select(DB::raw('select * from medicines where category_id=1'));
+        $listdata = DB::select(DB::raw('select * from products where category_id=1'));
         
 
         #query builder
@@ -56,9 +56,13 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($product)
     {
-        //
+        $res= Product::find($product);
+        $message="";
+        if($res) $message=$res;
+        else $message=null;
+        return view('product.show', compact ('message'));
     }
 
     /**
@@ -94,4 +98,15 @@ class ProductController extends Controller
     {
         //
     }
+    public function showInfo()
+            {
+            $result=Product::orderBy('price','DESC')->first();
+            return response()->json(array(
+                'status'=>'oke',
+                'msg'=>"<div class='alert alert-info'>
+                Did you know? <br>The most expensive product is ". $result->generic_name . "</div>"
+            ),200);
+            }
+
+   
 }
